@@ -1,0 +1,51 @@
+<ion-view>
+    <ion-content>
+        <!--<ion-scroll  direction="y" style=" height: 400px">-->
+            <form name="loginForm" novalidate id="loginFormSub" ng-submit="doLogin(loginForm)">
+                <div class="list login-container" autoscroll="true" >
+                    <!-- <img src="img/logos.png"/> -->
+                    <div class="logo"></div>
+                    <label class="item-input">
+                        <span class="input-label"><b>USER NAME</b></span>
+                        <b><input type="text" class="input-type" name="username" ng-model="loginData.username" required></b>
+                        <!--<p></p>-->
+                    </label>
+                    <div class="font12">
+                        <span style="margin-right:100px"></span>
+                        <span ng-show="loginForm.username.$error.required && (loginForm.username.$dirty || hasError)">*Username is required</span>
+                    </div>
+                    <label class="item-input">
+                        <span class="input-label"><b>PASSWORD</b></span>
+                        <b><input type="password" class="input-type" name="password" ng-model="loginData.Password" required></b>
+
+                    </label>
+
+                    <div class="font12">
+                        <span style="margin-right:100px"></span>
+                        <span ng-show="loginForm.password.$error.required && (loginForm.password.$dirty || hasError)">*Password is required</></span>
+                        <p class="font12" ng-bind="errorMsg" ng-show="loginForm.$dirty"></p>
+                    </div>
+                    <div class="font12">
+                        <span style="margin-right:100px"></span>
+                        <span ng-show="loginForm"></></span>
+                        <p class="font12" ng-bind="scroll" ng-show="loginForm"></p>
+                    </div>
+                    <label class="" ng-hide="winHeight<400">
+
+                        <button class="button button-block button-positive" type="submit">LOGIN</button>
+                    </label>
+
+                </div>
+
+            </form>
+            <!--</ion-scroll>-->
+</ion-content>
+    <ion-footer-bar style="background-color:#05ADEA;" class="login-footer action-footer button-positive" ng-show="winHeight<400">
+        <button type="submit" class="bar bar-footer bar-calm button-positive" form="loginFormSub">
+            <div class="footer-text">LOGIN</div>
+        </button>
+    </ion-footer-bar>
+    <ion-footer-bar>
+        <h6>Rico GO v1.0.0.8</h6>
+    </ion-footer-bar>
+</ion-view>

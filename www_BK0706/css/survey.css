@@ -1,0 +1,40 @@
+﻿#viewcontent{
+    margin:5% 5% 0 5%;
+
+}
+.viewcontent{
+    margin:0 5% 5% 5%;
+    padding-left:0px;
+
+}
+.viewcontent textarea{
+    border:1px solid #B3B0B0; border-radius:4px;
+
+}
+textarea {
+    width:100%;
+}
+.toggle .handle{
+    background-color:#F53C3E;
+
+}
+.toggle input:checked + .track .handle {
+    background-color: #9EE805; border-color: #9EE805;
+
+}
+button {
+    font-size:17px !important;
+}
+
+button i {
+    font-size:20px !important;
+}
+.button.button-block, .button.button-full {
+     margin-top: 0px; 
+     margin-bottom: 0px; 
+}
+.msg
+{
+    font-size:14px;
+    color:red;
+}

@@ -1,0 +1,88 @@
+﻿.bar .button.button-icon {
+    font-size: 14px;
+}
+
+button:after {
+    position: absolute;
+    top: -1px;
+    right: -6px;
+    bottom: -6px;
+    left: -6px;
+    content: ' ';
+}
+
+.selectall {
+    margin-left:20px!important;
+}
+
+.border {
+    height: auto!important;
+    width:auto!important;
+    }
+
+.imgpad {
+    padding: 8px 5px !important;
+}
+
+.item i.ion-close-circled{
+    color:red!important;
+}
+
+.item i.ion-checkmark-circled{
+    color:#5ed430;
+}
+.iconstyle { 
+    left: 0px !important;
+}
+
+.bar .buttons-right span {
+    margin-left: 1px;
+    display: inherit;
+}
+
+.colorRed {
+    color: red;
+}
+
+
+.button .badge {
+    position: relative;
+    top: -38px;
+    right: -13px;
+}
+
+
+.badge.badge-assertive {
+    background-color: rgb(242, 255, 0);
+    color: #111;
+}
+
+.selectall-Checkbox {
+    padding-left: 12px;
+    margin-left: 5px;
+    background: #157aa8 !important;
+    border: #157aa8 !important;
+}
+
+    .selectall-Checkbox > .checkbox {
+        right: 25px;
+        left: -7px;
+    }
+
+.selectAll-send {
+    font-size: 30px;
+    margin-left: 10px;
+    color: white;
+}
+
+.listselect-Checkbox {
+    padding-left: 12px;
+    margin-left: 5px;
+    border: none;
+    margin-top: 10px;
+}
+
+    .listselect-Checkbox > .checkbox {
+        right: 25px;
+        left: -7px;
+    }

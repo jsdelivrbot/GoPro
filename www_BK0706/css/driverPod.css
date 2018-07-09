@@ -1,0 +1,40 @@
+﻿#signatureCanvas {
+    border: 1px solid #ccc;
+    touch-action: none;
+}
+
+#canvasParent {
+    text-align: center;
+}
+
+.dpod-container {
+    padding: 10px 20px 10px 5px;
+    font-size: 12px;
+    color: #8BBAD1;
+    font-weight: bold;
+}
+
+button {
+    font-size: 17px !important;
+}
+
+    button i {
+        font-size: 20px !important;
+    }
+
+.button.button-block, .button.button-full {
+    margin-top: 0px;
+    margin-bottom: 0px;
+}
+
+.msg {
+    font-size: 14px;
+    color: red;
+}
+
+.input-label {
+    font-size: 12px;
+    color: #157aa8;
+    /*color:#8BBAD1;*/
+    /*font-weight:bold;*/
+}

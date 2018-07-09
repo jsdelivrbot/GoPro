@@ -1,0 +1,128 @@
+/* Empty. Add your own CSS if you like */
+.bar-stable {
+    border: transparent !important;
+    background-color: #157aa8 !important;
+}
+
+    .bar-stable .button.button-clear, .bar.bar-stable .title {
+        color: white !important;
+    }
+
+.list-content {
+    top: 75px;
+}
+
+.profile-detail .item {
+    background-color: #157aa8;
+    border-top-color: #157aa8;
+}
+
+    .profile-detail .item h2 {
+        color: white;
+    }
+
+    .profile-detail .item p {
+        color: white;
+    }
+
+.item-menu-icon {
+    padding-top: 5px;
+    padding-bottom: 5px;
+    border: none;
+}
+
+    .item-menu-icon.activated {
+        background-color: none;
+    }
+
+.menu-icon {
+    width: 30px;
+    background-size: 30px;
+    background-repeat: no-repeat;
+    background-position: 1px;
+}
+
+.icon-dockets {
+    background-image: url(../img/dockets.png);
+}
+
+.icon-completed {
+    background-image: url(../img/completed.png);
+}
+
+.icon-messages {
+    background-image: url(../img/messages.png);
+}
+
+.icon-deleted {
+    background-image: url(../img/deleted.png);
+}
+
+.icon-inbox {
+    background-image: url(../img/inbox.png);
+}
+
+.icon-compose {
+    background-image: url(../img/compose.png);
+}
+
+.icon-sent {
+    background-image: url(../img/sent.png);
+}
+
+
+.icon-logout {
+    background-image: url(../img/logout.png);
+}
+
+.blue-text {
+    color: #1678a5 !important;
+}
+
+.custom-icons {
+    margin: 0 10px;
+}
+
+    .custom-icons .ion-ios-telephone {
+        border: 2px solid;
+        border-radius: 100%;
+    }
+
+.icon-break-in {
+    background-image: url(../img/driver-in.png);
+}
+
+.icon-break-out {
+    background-image: url(../img/driver-out.png);
+}
+
+.button.button-icon.button-clear.custom-icons.ion-close-circled {
+    color: red !important;
+    color: white;
+}
+
+.button.button-icon.button-clear.custom-icons.ion-checkmark-circled {
+    color: #5ed430 !important;
+    color: white;
+}
+
+.popup-container .popup {
+    background-color: rgba(255, 255, 255, 1);
+}
+
+.all-icon {
+    margin-top: 6px;
+    margin-left: 5px;
+    color: white;
+}
+
+.no_wraptext h2  {
+    overflow: initial;
+    text-overflow: initial;
+    white-space: initial;
+}
+.no_wraptext p  {
+    overflow: initial;
+    text-overflow: initial;
+    white-space: initial;
+}

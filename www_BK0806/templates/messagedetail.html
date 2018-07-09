@@ -1,0 +1,83 @@
+﻿<!--<ion-view view-title="MessageDetail">-->
+<!--<div class="col-75 viewcontent">-->
+<!--<textarea rows="4" ng-model="Text" name="textarea"></textarea>-->
+<!--</div>-->
+<!--<div class="col-25 viewcontent">-->
+<!--<i class="icon ion-ios-telephone cal12"></i>-->
+<!--<div class="one1"> <i class="fa fa-paper-plane send12" aria-hidden="true"></i></div>
+       <div class="two2"><i class="fa fa-phone cal12" aria-hidden="true"></i></div>
+
+   </div>
+
+
+</div>-->
+<!--</a>-->
+<!--<ion-content>-->
+<!--<ion-list class="list">-->
+<!--<a class="items b-align">
+    <div class="row">
+
+<a class="items b-align"  ng-repeat="msg in msglist">
+<div class="row">
+    <div class="msgg col-67 " ng-repeat="msg in msglist">
+        <div class="msgrName">{{msg.MessageInfo[0]}}</div>
+        <div class="content">{{msg}}</div>
+    </div>
+    <div class="col-33">
+        <p class="font123">{{msgg.CreatedDate.split("T")[0]}} {{msg.CreatedDate.split(".")[0].split("T")[1].slice(0,5)}}</p>
+    </div>
+</div>
+    </a>
+        </a>-->
+<!--</ion-list>-->
+<!--</ion-content>
+</ion-view>-->
+<ion-view ng-show="msglist">
+    <ion-nav-title>{{msglist[0].FromUser}}</ion-nav-title>
+    <ion-content>
+        <form novalidate name="composeForm">
+            <div class="row">
+                <div class="col-75 viewcontent">
+
+                    <textarea rows="4" id="sendmsg" ng-model="Text.sendmsg" name="textarea" required></textarea>
+                </div>
+
+                <div class="col ">
+                    <!--<i class="icon ion-ios-telephone cal12"></i>-->
+                    <div class="one1" ng-click="send(Text.sendmsg,composeForm)"> <i class="fa fa-paper-plane send12" aria-hidden="true"></i></div>
+                    <!--<div class="two2"><i class="fa fa-phone cal12" aria-hidden="true"></i></div>-->
+
+                </div>
+
+            </div>
+            <div class="row">
+                <div class="col viewcontent msg" ng-show="composeForm.textarea.$error.required && (composeForm.textarea.$dirty || hasError)">*Please enter a message</div>
+            </div>
+        </form>
+        <!--</div>-->
+        <ion-list class="list">
+            <a class="items b-align " ng-repeat="msg in msglist | orderBy:'-CreatedDate'">
+                <div class="row">
+                    <div class="col col-66 item-text-wrap">
+
+                        <!--<h5>{{msg.FromUser}}</h5>-->
+                        <!--<p>{{msg.Subject}}</p>-->
+                        <p>{{msg.MessageText}}</p>
+
+                    </div>
+
+                    <div class="col col-34 ">
+
+                        <p class="font123">{{msg.CreatedDate.split("T")[0]}} {{msg.CreatedDate.split(".")[0].split("T")[1].slice(0,5)}}</p>
+
+                    </div>
+
+                </div>
+
+            </a>
+
+
+        </ion-list>
+    </ion-content>
+</ion-view>
+

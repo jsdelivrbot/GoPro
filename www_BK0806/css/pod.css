@@ -1,0 +1,47 @@
+﻿#canvasParent {
+    text-align: center;
+}
+
+    #canvasParent canvas {
+        border: 1px solid #ccc;
+    }
+
+.alignment {
+    padding: 6px;
+}
+
+#signatureCanvas {
+    border: 1px solid #ccc;
+}
+
+.clear-icon {
+    color: black !important;
+    width: 320px;
+    /*text-align: right;*/
+    text-align: left;
+    padding: 0;
+}
+
+    .clear-icon:before {
+        font-size: 23px;
+    }
+
+.font12 {
+    font-size: 10px;
+    color: #f00;
+    display: block;
+}
+
+.errposition {
+    display: inline-block;
+    padding: 0;
+    margin: 0;
+}
+
+.footer-text {
+    width: 100%;
+}
+
+    .footer-text:before {
+        margin-right: 5px;
+    }

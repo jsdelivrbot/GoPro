@@ -1,0 +1,34 @@
+﻿<ion-view view-title="Completed Dockets">
+    <ion-content>
+        <div class="list">
+            <a class="item a-align no_wraptext" href="#/app/docketdetail/{{completedlist.DocketID}}/PodDetails" ng-repeat="completedlist in completedListData | orderBy:'-CreatedOn'">
+                <!--ng-if="completedlist.Status=='POD'"-->
+                <div class="row">
+                    <div class="col">
+                        <p class="img-contant" ng-style="{'background-color': completedlist.ColorCode}">{{completedlist.Status}}</p>
+                    </div>
+                    <div class="col col-50">
+                        <p>DOCKET NUMBER</p>
+                        <h2 class="blue-text">{{completedlist.SageJobId}}{{findobj}}</h2>
+                        <p class="blue-text">{{completedlist.Customer.CustomerName}}</p>
+                        <p class="blue-text">
+                            <span ng-repeat="delivery in completedlist.Delivery">
+                                <!--{{delivery.Street}},{{delivery.Building}},{{delivery.Locality}}-->
+                                {{delivery.CityName}},{{delivery.PostalCode}}
+                                <!--{{delivery.StateName}},{{delivery.CountryName}}-->
+
+                            </span>
+                        </p>
+                    </div>
+                    <div class="col col-33 item-text-wrap">
+                        <p>CREATED ON</p>
+                        <h2 class="blue-text">{{completedlist.CreatedOn.split("T")[0]}} {{completedlist.CreatedOn.split(".")[0].split("T")[1].slice(0,5)}}</h2>
+                        <p> </p>
+                        <p class="list-icon"> <img src="img/wait-and-return.png" ng-if="completedlist.WaitAndReturn" /> <img src="img/multi-drop.png" ng-if="completedlist.IsMultiDrop" /> <img src="img/cash-on-delivery.png" ng-if="completedlist.IsCOD" /></p>
+
+                    </div>
+                </div>
+            </a>
+        </div>
+    </ion-content>
+</ion-view>

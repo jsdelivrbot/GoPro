@@ -1,0 +1,29 @@
+<ion-view view-title="Browse">
+    <ion-content>
+        <div ng-repeat="msg in messageList">
+            <div class="messageInfo">
+                <div class="row">
+                    <div class="col col-60 ">
+
+
+                        <p class="detail">{{msg.SenderName}}  ( {{$index+1}} )</p>
+
+                        <p class="message">{{msg.Content}}</p>
+                        <!--<label class="msg-detail">message content<a href="#/app/message"> click here</a></label>-->
+                        <!--<button class="button button-icon ion-compose clr" ng-click="gotoMessage()">Message Content</button>-->
+                        <!--<button class="button" ng-click="location.path('#/app/message')">
+                Message Content
+            </button>-->
+
+                    </div>
+                    <div class="col  col-40">         
+                         <p class="recTime "><b>Received On</b></p>
+                    <p class="detail2">{{msg.ReceivedOn.split("T")[0]}} {{msg.ReceivedOn.split(".")[0].split("T")[1].slice(0,5)}}
+                    <p> </p>
+                </div>
+
+                </div>
+            </div>
+        </div>
+    </ion-content>
+</ion-view>

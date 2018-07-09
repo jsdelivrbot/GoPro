@@ -1,0 +1,81 @@
+﻿<ion-view title='POD'>
+    <ion-content class='has-header padding' has-bouncing="false" style="margin-bottom:20px;">
+        <form name="podForm" novalidate id="podFormSub" ng-submit="showDetails(podForm,podData);">
+            <div class="list">
+                <label class="item-input alignment" ng-hide="waitandreturn">
+                    <span class="input-label"><b>DOCKET NUMBER</b></span>
+                    <p><b>{{podData.dockerID}}</b></p>
+                    <!-- <input type="value" ng-model="podData.dockerID" readonly> -->
+                </label>
+                <label class="item-input alignment" ng-hide="waitandreturn">
+                    <span class="input-label"><b>CTRN</b></span>
+                    <p>{{podData.TrackingID}}</p>
+                    <!-- <input type="number" placeholder="No of Packages" ng-model="podData.expectedPackage" readonly> -->
+                </label>
+                <label class="item-input alignment">
+                    <span class="col-md-4 input-label"><b>NAME</b><span class="msg">*</span></span>
+                    <input type="text" placeholder="Name" class="input-type" name="uname" ng-model="podData.getname" ng-pattern="/^[a-zA-Z ]*$/" required>
+                </label>
+                <div class="font12">
+                    <span class="input-label errposition">&nbsp;</span>
+                    <span ng-show="podForm.uname.$error.required && (podForm.uname.$dirty || errlog)">*Required!</span>
+                    <span ng-show="podForm.uname.$error.pattern">*Not a valid name!</span>
+                </div>
+                <label class="item-input alignment" ng-hide="waitandreturn">
+                    <span class="input-label"><b>PACKAGES EXPECTED</b></span>
+                    <input type="number" placeholder="No of Packages"  class="input-type" name="packages" ng-model="podData.expectedPackage" readonly>
+                </label>
+                <label class="item-input alignment" >
+                    <span class="input-label"><b>PACKAGES DELIVERED</b><span class="msg">*</span></span>
+                   <input type="number"  placeholder="No of Packages" class="input-type" name="packages" ng-model="podData.getpackage">
+                </label>
+                <div class="font12">
+                    <span class="input-label errposition">&nbsp;</span>
+                    <span ng-show="podForm.packages.$error.required && (podForm.packages.$dirty || errlog)">*Required!</span>
+                </div>
+                <label class="item-input alignment">
+                    <span class="input-label"><b>COMMENTS</b><span class="msg" ng-show="podForm.comments.$error.required">*</span></span>
+                    <textarea name="comments" ng-maxlength="300" ng-minlength="10" placeholder="Comments" class="input-type" ng-model="podData.getcomments" ng-required="podData.getpackage!=podData.expectedPackage"></textarea>
+                </label>
+                <div class="font12">
+                    <span class="input-label errposition">&nbsp;</span>
+                    <span ng-show="podForm.comments.$error.maxlength || podForm.comments.$error.minlength">*Comments must be minimum 10 characters and maximum 300 characters</span>                    
+                    <span ng-show="podForm.comments.$error.required && (podForm.comments.$dirty || errlog)">*Required!</span>
+                </div>
+
+
+                <!--<div class='button-bar'>
+                    <a class='button button-energized' ng-click='clearCanvas()'>Clear</a>
+                    <a class='button button-balanced' ng-click='saveCanvas()'>Save</a>
+                </div>
+                <br>
+                <img ng-src='{{signature}}'/>-->
+
+            </div>
+
+
+
+            
+            <div id="canvasParent">
+                <!--<canvas id='signatureCanvas' width='320' height='320'></canvas>-->
+                <span ng-show="imgError" class="font12">*Sign is required</span>
+                <span class="button button-clear ion-backspace clear-icon" ng-click="clearSign()"></span>
+
+                <signature-pad accept="$parent.accept" clear="$parent.clear" dataurl="basedata" clear="clear" height="150" width="320" style="margin:auto"></signature-pad>
+
+            </div>
+
+            <!--<h2 class="title" style="padding:10px;color:#fff;"><a href="#" ng-click="showDetails(podForm,podData);">COMPLETE</a></h2>-->
+            <!--<div class="bar bar-footer bar-calm" ng-click="showDetails(podForm,podData);">
+                <h2 class="title" >COMPLETE</h2>
+            </div>-->
+        </form>
+
+    </ion-content>
+
+    <ion-footer-bar style="background-color:#05ADEA;" class="action-footer">
+        <button type="submit" class="bar bar-footer bar-calm" form="podFormSub">
+            <div class="ion-checkmark-circled footer-text">COMPLETE</div>
+        </button>
+    </ion-footer-bar>
+</ion-view>

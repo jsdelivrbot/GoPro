@@ -1,0 +1,29 @@
+﻿<ion-view view-title="Inbox">
+  <ion-content>
+      <ion-refresher
+    pulling-text="Pull to refresh..."
+    on-refresh="InitInbox()">
+  </ion-refresher>
+    <ion-list class="list">
+    <a class="items b-align" href="#/app/messagedetail/{{msg.UserID}}" ng-repeat="msg in msgdata" ng-click="msgdetail(msg)">    
+        <div class="row"> 
+            <div class="col col-66 item-text-wrap">
+                <h5>{{msg.FromUser}} ({{msg.message.length}})</h5>
+             
+                <p>{{msg.message[0].MessageText}}</p>
+                
+            </div>  
+            
+            <div class="col col-34" >
+               
+                <p class="font123">{{msg.message[0].CreatedDate.split("T")[0]}} {{msg.message[0].CreatedDate.split(".")[0].split("T")[1].slice(0,5)}}</p>
+                
+            </div>
+                                 
+        </div>                
+    </a>
+
+       
+</ion-list>
+  </ion-content>
+</ion-view>

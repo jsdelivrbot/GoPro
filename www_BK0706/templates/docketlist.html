@@ -1,0 +1,67 @@
+﻿<ion-view view-title="Dockets">
+    <ion-content>
+        <ion-refresher pulling-text="Pull to refresh..."
+                       on-refresh="InitDocketList()">
+        </ion-refresher>
+        <ion-list class="list">           
+
+              <a class="item a-align no_wraptext" ng-click="navDocketDetail(docketlist)" ng-repeat="docketlist in docketListData | orderBy:'-AllocationDate'">
+
+                <!--<img src="img/avatar.png">-->
+                <!--<h2>Deveoper</h2>
+    <p>cher2,che43</p>-->
+                <div class="row">
+                  <div class="col" ng-if="ShowCheck&&docketlist.Status=='ALL'">
+                    <ion-checkbox ng-model="docketlist.selectAll" class="listselect-Checkbox" ng-click="selectDocketCheck(docketlist.selectAll,$event)"></ion-checkbox>
+                  </div>
+                  <div class="col">
+
+                    <p class="img-contant" ng-style="{'background-color': docketlist.ColorCode}">{{docketlist.Status}}</p>
+
+
+                  </div>
+
+                  <div class="col col-50">
+                    <p>DOCKET NUMBER</p>
+                    <h2 class="blue-text">{{docketlist.SageJobId}}{{findobj}}</h2>
+                    <p class="blue-text">{{docketlist.Customer.CustomerName}}</p>
+                    <!--<p>{{docketlist.Delivery[0].Street}},{{docketlist.Delivery[0].Building}},{{docketlist.Delivery[0].Locality}},{{docketlist.Delivery[0].CityName}},
+            {{docketlist.Delivery[0].PostalCode}},
+            {{docketlist.Delivery[0].StateName}},{{docketlist.Delivery[0].CountryName}}
+        </p>-->
+                    <p class="blue-text">
+                    <p class="blue-text">
+                    <p class="blue-text">
+
+                     
+
+
+                    </p>
+                   
+
+                    <p class="blue-text">
+
+                      <span>
+                        {{docketlist.Pickup.CityName}}-{{docketlist.Pickup.PostalCode}}
+                      </span>, <span ng-repeat="delivery in docketlist.Delivery">
+                        {{delivery.CityName}}-{{delivery.PostalCode}} 
+                      </span>
+                    </p>
+                  </div>
+                  <div class="col col-33 item-text-wrap">
+                    <p>CREATED ON</p>
+                    <h2 class="blue-text">{{docketlist.CreatedOn.split("T")[0]}} {{docketlist.CreatedOn.split(".")[0].split("T")[1].slice(0,5)}}</h2>
+                    <p class="list-icon"> <img src="img/wait-and-return.png" ng-if="docketlist.WaitAndReturn" /> <img src="img/multi-drop.png" ng-if="docketlist.IsMultiDrop" /> <img src="img/cash-on-delivery.png" ng-if="docketlist.IsCOD" /></p>
+
+                  </div>
+
+
+
+                </div>
+              </a>
+
+
+        </ion-list>
+    </ion-content>
+
+</ion-view>

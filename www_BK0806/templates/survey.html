@@ -1,0 +1,87 @@
+﻿<ion-view view-title="Survey">
+    <ion-content>
+        <form name="SurveyForm" novalidate id="SurveyFormSub" ng-submit="next(SurveyForm,question.m_Item1);">
+            <div ng-repeat="questions in question.m_Item1">
+                <div class="col-100" id="viewcontent">
+                    <span>
+                        {{questions.Question}}
+                    </span>
+                </div>
+                <div class="row">
+                    <div class="col-60 viewcontent">
+
+                        <textarea rows="4" style="resize:none" ng-required="! questions.togglevalue" ng-model="questions.AnswerText" name="question{{$index}}"></textarea>
+                        <span class="assertive" ng-show="SurveyForm.question{{$index}}.$error.required && errorinfo">*Required Please enter your comments</span>
+                    </div>
+
+                    <div class="col-40 viewcontent">
+                        <label class="toggle toggle-light">
+                            <input type="checkbox" name="value" ng-model="questions.togglevalue">
+                            <span class="track">
+                                <div class="handle"></div>
+                            </span>
+                        </label>
+                    </div>
+                </div>
+                <!--<span ng-if="!questions.togglevalue && !questions.AnswerText"> Please Enter Your Comment.</span>-->
+            </div>
+
+            <!--<div class="col">
+                <div class="col-100" id="viewcontent">
+                    <span>Did the driver deliver on time?</span>
+                </div>
+                <div class="row">
+                    <div class="col-60 viewcontent">
+                        <textarea rows="4" ng-required="!toggle.value2" ng-model="question.question2" name="question.question2"></textarea>
+                        <span class="assertive" ng-show="SurveyForm.text2.$error.required && errorinfo">*Required</span>
+                    </div>
+                    <div class="col-40 viewcontent">
+
+                        <label class="toggle toggle-light">
+                            <input type="checkbox" name="value2" ng-model="toggle.value2">
+                            <div class="track">
+                                <div class="handle"></div>
+                            </div>
+                        </label>
+                    </div>
+                </div>
+            </div>-->
+            <!--<div class="col">
+                <div class="col-100" id="viewcontent">
+                    <span>Were you happy with the driver appearance and service?</span>
+                </div>
+                <div class="row">
+                    <div class="col-60 viewcontent">
+                        <textarea rows="4" ng-required="!toggle.value3" ng-model="question.question3" name="question3"></textarea>
+                        <span class="assertive" ng-show="SurveyForm.text3.$error.required && errorinfo">*Required</span>
+                    </div>
+                    <div class="col-40 viewcontent">
+
+                        <label class="toggle toggle-light">
+                            <input type="checkbox" name="value2" ng-model="toggle.value3">
+                            <div class="track">
+                                <div class="handle"></div>
+                            </div>
+                        </label>
+                    </div>
+                </div>
+            </div>-->
+
+            <div class="msg">
+                <p ng-bind="errorMsg" ng-show="SurveyForm.$dirty"></p>
+                <!--<p ng-show="SurveyForm.ans1.$error.required && (SurveyForm.ans1.$dirty || hasError)">*Ans1 is required</p>-->
+                <!--<p ng-show="SurveyForm.cashrec.$error.required && (SurveyForm.cashrec.$dirty || hasError)">*recieved cash is required</p>
+                <p ng-show="SurveyForm.signatureCanvas.$error.required && (SurveyForm.SignatureCanvas.$dirty || hasError)">*signature is required</p>-->
+            </div>
+            <!--<ion-footer-bar class="bar-assertive" ng-style="{'background-color':docketDetailList.ColorCode}">
+
+                <button class="button button-block button-assertive" ng-click="next(SurveyForm,question.m_Item1);"><i class="ion-ios-checkmark-outline"></i>  &nbsp;NEXT</button>
+            </ion-footer-bar>-->
+        </form>
+    </ion-content>
+    <ion-footer-bar style="background-color:#05ADEA;" class="action-footer">
+        <button type="submit" class="bar bar-footer bar-calm" form="SurveyFormSub">
+            <div class="ion-checkmark-circled footer-text">NEXT</div>
+        </button>
+    </ion-footer-bar>
+</ion-view>
