@@ -1,0 +1,52 @@
+﻿.viewcontent textarea {
+    border: 1px solid #B3B0B0;
+    border-radius: 4px;
+    margin-top: 3px;
+    margin-bottom: 1px;
+}
+
+.viewcontent {
+    margin: 0 0 5% 5%!important; 
+    padding-left: 0px;
+}
+
+.msg {
+    font-size: 14px;
+    color: red;
+}
+
+.txttype {
+    font-weight: bold;
+}
+
+.cal12 {
+    content: "\f098";
+    padding: 3px !important;
+    border: 2px solid !important;
+    border-radius: 50%;
+    border-color: rgba(148, 210, 36, 0.89) !important;
+    /*border-style:solid !important;*/
+    color: rgba(148, 210, 36, 0.89) !important;
+}
+
+.send12 {
+    /*padding-top: 70px !important;*/
+    padding-right: 30px !important;
+    color: rgba(0, 135, 255, 0.91) !important;
+    display: block;
+}
+
+
+.msgrName {
+    color: blue;
+    font-size: 12px;
+}
+
+.content {
+    color: black;
+    font-size: 10px;
+}
+
+.unreadMsg {
+    background: #ccc;
+}

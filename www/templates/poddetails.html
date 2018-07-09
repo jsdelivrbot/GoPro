@@ -1,0 +1,83 @@
+﻿<ion-view view-title="{{title}}">  
+   
+        <ion-content>
+            <div ng-if="!enableNotes">
+                <div class="item item-text-wrap" ng-if="poddetails[0].IsCOD">
+                    <div class="row">
+                        <h2 class="col order order-col">DRIVER POD</h2>
+                    </div>
+                    <div class="row responsive-sm">
+                        <div class="col col-75">
+                            <span>Cash Exp : {{poddetails[0].CashExpected}}</span>
+                            <br />
+                            <span>Cash Rec : {{poddetails[0].CODAmountReceived}}</span>
+                            <br />
+                            <span>Date of Sign : {{poddetails[0].DriverSignatureDateTime.split("T")[0]}} {{poddetails[0].DriverSignatureDateTime.split("T")[1].split(":")[0]}}:{{poddetails[0].DriverSignatureDateTime.split("T")[1].split(":")[1]}}</span>
+                            <br />
+                            <span>Comments : {{poddetails[0].DriverComments}}</span>
+                        </div>
+                        <div class="col">
+                            <img width="150" data-ng-src="data:image/png;base64,{{poddetails[0].DriverSignature}}">
+                        </div>
+                    </div>
+                </div>
+                <div class="item item-text-wrap">
+                    <div class="row">
+                        <h2 class="col order order-col">CUSTOMER POD</h2>
+                    </div>
+                    <ion-list class="list">
+                        <div class="item a-align" ng-repeat="pod in poddetails | orderBy:'AddressID'">
+                            <div class="row responsive-sm">
+                                <div class="col col-75">
+                                    <span>Docket Number : {{pod.DocketID}}</span>
+                                    <br />
+                                    <span>Name : {{pod.NameOfPerson}}</span>
+                                    <br />
+                                    <span>No of Packs : {{pod.NoOfPackagesDelivered}}</span>
+                                    <br />
+                                    <span>POD Date : {{pod.PODDate.split("T")[0]}} {{pod.PODDate.split("T")[1].split(":")[0]}}:{{pod.PODDate.split("T")[1].split(":")[1]}}</span>
+                                    <br />
+                                    <span>Comments : {{pod.Comments}}</span>
+                                </div>
+                                <div class="col">
+                                    <img width="150" data-ng-src="data:image/png;base64,{{pod.CustomerSignature}}">
+                                </div>
+                            </div>
+                        </div>
+                    </ion-list>
+                </div>
+                <div class="item item-text-wrap" ng-if="poddetails[0].IsCOD">
+                    <div class="row">
+                        <h2 class="col order order-col">MANAGER POD</h2>
+                    </div>
+                    <div class="row responsive-sm">
+                        <div class="col col-75">
+                            <span>Name : {{poddetails[0].PODManagerName}}</span>
+                            <br />
+                            <span>Cash Rec : {{poddetails[0].CODAmountReturned}}</span>
+                            <br />
+                            <span>Date of Sign: {{poddetails[0].PODManagerSignatureDateTime.split("T")[0]}} {{poddetails[0].PODManagerSignatureDateTime.split("T")[1].split(":")[0]}}:{{poddetails[0].PODManagerSignatureDateTime.split("T")[1].split(":")[1]}}</span>
+                            <br />
+                            <span>Comments : {{poddetails[0].PODManagerComments}}</span>
+                        </div>
+                        <div class="col">
+                            <img width="150" data-ng-src="data:image/png;base64,{{poddetails[0].PODManagerSignature}}">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div ng-if="enableNotes">
+                <div class="item item-text-wrap">
+                    <div class="row">
+                        <h2 class="col order order-col">Notes</h2>
+                    </div>
+                    <div class="row responsive-sm">
+                        <div class="col">
+                            {{notes}}
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </ion-content>
+</ion-view>

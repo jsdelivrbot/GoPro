@@ -1,0 +1,65 @@
+﻿<ion-view view-title="Driver POD">
+    <ion-content>
+        <form name="dpodForm" novalidate id="dpodFormSub" ng-submit="showData(dpodForm,cash);">
+            <div class="dpod-container">
+                <label class="item-input">
+                    <span class="input-label"><b>CASH EXPECTED</b></span>
+                    <input type="number" class="input-type" name="cashexp" ng-model="cash.cashexp" readonly />
+                </label>
+
+                <label class="item-input">
+                    <span class="input-label"><b>CASH RECEIVED</b><span class="msg">*</span></span>
+                    <input type="number" class="input-type" name="cashrec" ng-model="cash.cashrec" required>
+                </label>
+                <label class="item-input">
+                    <span class="input-label"><b>COMMENTS</b><span class="msg" ng-show="dpodForm.comments.$error.required">*</span></span>
+                    <textarea ng-minlength="10" ng-maxlength="300" type="text" class="input-type" name="comments" ng-model="cash.comments" ng-required="cash.cashexp!=cash.cashrec"></textarea>
+                </label>
+                <br>
+                <div class="msg">
+                    <p ng-bind="errorMsg" ng-show="dpodForm.$dirty"></p>
+                    <p ng-show="dpodForm.cashexp.$error.required && (dpodForm.cashexp.$dirty || hasError)">*Excepted cash is required</p>
+                    <p ng-show="dpodForm.cashrec.$error.required && (dpodForm.cashrec.$dirty || hasError)">*Recieved cash is required</p>
+                    <p ng-show="dpodForm.comments.$error.required && (dpodForm.comments.$dirty || hasError)">*Not exact cash – no delivery – comments required</p>
+                    <p ng-show="dpodForm.comments.$error.maxlength || dpodForm.comments.$error.minlength">*Comments must be minimum 10 characters and maximum 300 characters</p>
+                    <p ng-show="cashErr">{{cashRecErr}}</p>
+                    <span ng-show="imgError">*Sign is required</span>
+                </div>
+                <!--<div class="msg">
+                    <p ng-bind="errorMsg" ng-show="dpodForm.$dirty"></p>
+                    <p ng-show="dpodForm.cashexp.$error.required && (dpodForm.cashexp.$dirty || hasError)">*excepted cash is required</p>
+                    <p ng-show="dpodForm.cashrec.$error.required && (dpodForm.cashrec.$dirty || hasError)">*received cash is required</p>
+                </div>-->
+                <div id="canvasParent">
+                    <!--<canvas id='signatureCanvas' width='320' height='320'></canvas>-->
+                    <span class="button button-clear ion-backspace clear-icon" ng-click="clearSign()"></span>
+
+                    <signature-pad accept="$parent.accept" clear="$parent.clear" dataurl="basedata" clear="clear" height="150" width="320" style="margin:auto"></signature-pad>
+
+                </div>
+                <!-- <ion-pane>-->
+                <!--<div class='has-header padding' id="canvasParent" scroll='false'>
+
+                    <canvas id='signatureCanvas' width='320' height='300'  required></canvas>
+
+
+                </div>-->
+                <!--</ion-pane>-->
+                
+            </div>
+            <!--<div class="bar bar-footer">
+                <button class="button button-block button-assertive" ng-click="showData(dpodForm,cash)"><i class="ion-ios-checkmark-outline"></i>  &nbsp;NEXT</button>
+            </div>-->
+        </form>
+
+    </ion-content>
+    <ion-footer-bar style="background-color:#05ADEA;" class="action-footer">
+        <button type="submit" class="bar bar-footer bar-calm" form="dpodFormSub">
+            <div class="ion-checkmark-circled footer-text">COMPLETE</div>
+        </button>
+    </ion-footer-bar>
+    <!--<ion-footer-bar class="bar-assertive" ng-style="{'background-color':docketDetailList.ColorCode}">
+
+        <button class="button button-block button-assertive" ng-click="showData(cash)"><i class="ion-ios-checkmark-outline"></i>  &nbsp;NEXT</button>
+    </ion-footer-bar>-->
+</ion-view>

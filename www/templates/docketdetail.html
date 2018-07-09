@@ -1,0 +1,125 @@
+<ion-view view-title="Docket Details" ng-show="docketDetailList">
+
+  <ion-header-bar class="bar bar-subheader subheader small">
+    <div class="item item-text-wrap docket-info" ng-style="{'background-color':docketDetailList.ColorCode}">
+
+      <div class="row">
+        <div class="col col-50"><h2 class="bold">Docket Number</h2><p>{{docketDetailList.SageJobId}}</p></div>
+        <div class="col col-50"><div class="pull-right head-right"><h2 class="bold">Created On</h2><p>{{docketDetailList.CreatedOn.split("T")[0]}} {{docketDetailList.CreatedOn.split("T")[1].split(":")[0]}}:{{docketDetailList.CreatedOn.split("T")[1].split(":")[1]}}</p></div></div>
+      </div>
+      <div class="row">
+
+        <div class="col col-33"><h2 class="bold">CTRN</h2><p>{{docketDetailList.TrackingID}}</p></div>
+        <div class="col col-33"><div style="text-align:center"><h2 class="bold"></h2><p></p></div></div>
+        <div class="col col-33"><div class="pull-right head-right"><h2 class="bold">Packages</h2><p>{{docketDetailList.Packages}}</p></div></div>
+      </div>
+
+    </div>
+  </ion-header-bar>
+  <ion-content class="has-subclass">
+
+    <div class="item item-text-wrap">
+
+      <div class="row">
+
+        <b class="col order order-col">
+          <div class="deliverySelected" ng-show="itemSelected==docketDetailList.Pickup"></div>COL
+        </b>
+      </div>
+      <div class="row">
+        <div class="col col-75"><h2>{{docketDetailList.Pickup.ContactName}}</h2></div>
+
+      </div>
+      <div class="row">
+        <div class="col col-75">
+          <p>
+            {{docketDetailList.Pickup.CompanyName}}, {{docketDetailList.Pickup.Building}},{{docketDetailList.Pickup.Street}}, {{docketDetailList.Pickup.Locality}}, {{docketDetailList.Pickup.CityName}}, {{docketDetailList.Pickup.StateName}} ,{{docketDetailList.Pickup.CountryName}} ,{{docketDetailList.Pickup.PostalCode}}<br />
+            <span class="del_fontbold"><label class="del_fontbold">Col By : </label>{{docketDetailList.CollectBy.split("T")[0]}} {{docketDetailList.CollectBy.split("T")[1].split(":")[0]}}:{{docketDetailList.CollectBy.split("T")[1].split(":")[1]}}</span><br />
+            <span>
+              <label>Google Address :</label>{{docketDetailList.Pickup.GoogleValidatedAddress}}
+            </span><br />
+
+            <div class="notes-badge" ng-click="notes(docketDetailList.Pickup.Notes)">
+              <b>Notes</b>
+            </div><br />
+
+            
+            <i class="fa fa-phone call-icon" ng-if="docketDetailList.Pickup.PhoneNumber" ng-click="callController()"></i> <span>{{docketDetailList.Pickup.PhoneNumber}}</span>
+          </p>
+        </div>
+
+        <div class="col" ng-click="gotoMap('COL',docketDetailList.Pickup.Latitude,docketDetailList.Pickup.Longitude,0,0)"><br /><div class="package-emptybadge package-badge" ng-if="deliveryAddr.NoOfPackages!=0"><i class="fa fa-map-marker"></i><p>PACKAGE</p><h2></h2></div></div>
+      </div>
+    </div>
+    <div class="item item-text-wrap" ng-repeat="deliveryAddr in docketDetailList.Delivery">
+
+      <div class="row">
+        <b class="col order order-del"><div class="deliverySelected" ng-show="itemSelected==deliveryAddr"></div>DEL</b>
+      </div>
+      <div class="row">
+        <div class="col col-75"><h2>{{deliveryAddr.ContactName}}</h2></div>
+
+      </div>
+      <div class="row">
+        <div class="col col-75">
+          <p>
+            {{deliveryAddr.CompanyName}}, {{deliveryAddr.Building}},{{deliveryAddr.Street}}, {{deliveryAddr.Locality}}, {{deliveryAddr.CityName}}, {{deliveryAddr.StateName}} ,{{deliveryAddr.CountryName}} ,{{deliveryAddr.PostalCode}}
+            <br />
+            <span class="del_fontbold"><label class="del_fontbold">Del By : </label>{{deliveryAddr.DropDeliveryDate.split("T")[0]}} {{deliveryAddr.DropDeliveryDate.split("T")[1].split(":")[0]}}:{{deliveryAddr.DropDeliveryDate.split("T")[1].split(":")[1]}}</span><br />
+            <span>
+              <label>Google Address :</label>{{deliveryAddr.GoogleValidatedAddress}}
+            </span><br />
+            <div class="notes-badge" ng-click="notes(deliveryAddr.Notes)">
+              <b>Notes</b>
+            </div><br />
+            <i class="fa fa-phone call-icon" ng-if="deliveryAddr.PhoneNumber" ng-click="callControllerCust()"></i> <span>{{deliveryAddr.PhoneNumber}}</span>
+          </p>
+        </div>
+        <div class="col" ng-click="gotoMap('DEL',docketDetailList.Pickup.Latitude,docketDetailList.Pickup.Longitude,deliveryAddr.Latitude,deliveryAddr.Longitude)"><br /><div class="package-badge" ng-class="{'package-emptybadge':deliveryAddr.NoOfPackages==0}"><i class="fa fa-map-marker"></i><p>PACKAGE</p><h2>{{deliveryAddr.NoOfPackages}}</h2></div></div>
+      </div>
+    </div>
+    <!--<div class="item item-text-wrap">
+    <div class="row">
+        <span class="col order order-del">DEL</span>
+        </div>
+       <div class="row">
+      <div class="col col-75"><h2>Shaji Joseph</h2></div>
+    </div>
+              <div class="row">
+                   <div class="col col-75"><p>Some Company, BUilding Name,12th street vinayaga locality, Madurai, Tamil Nadu 623455
+                       <br />
+                       <i class="fa fa-phone call-icon"></i> <span>+91 766 789 7807, +91 956 678 4563</span>
+                                           </p></div>
+                   <div class="col"><br /><div class="package-badge"><i class="fa fa-map-marker"></i><p>PACKAGE</p><h2>17</h2></div></div>
+              </div>
+          </div>-->
+
+  <script id="templates/modalnote.html" type="text/ng-template">
+    <ion-modal-view>
+        <ion-header-bar class="bar bar-header bar-stable">
+            <h1 class="title">Collection Notes</h1>
+            <button class="button button-clear button-primary" ng-click="modal.hide()">Cancel</button>
+        </ion-header-bar>
+        <ion-content padding="true" ng-class="{'has-footer': showFooter}">
+          
+            <div>{{localstorage}}</div>
+            <!-- <h1 class="text-center">Selected:{{localstorage}}</h1> -->
+         
+        </ion-content>
+    </ion-modal-view>
+</script>
+        
+  </ion-content>
+  <ion-footer-bar class="bar footer-bar" align-title="center" ng-click="submitDel(docketDetailList)" ng-style="{'background-color':docketDetailList.ColorCode}" ng-if="itemSelected.ButtonName&&(docketDetailList.Status!='COA'||docketDetailList.Status=='CANC')">
+    <h2 class="title"><i class="fa fa-check check-icon"></i>{{itemSelected.ButtonName}}</h2>
+  </ion-footer-bar>
+  <ion-footer-bar class="bar footer-bar" align-title="center" ng-click="completedDoc('notes')" ng-style="{'background-color':docketDetailList.ColorCode}" ng-if="docketDetailList.Status=='COA'||docketDetailList.Status=='CANC'">
+    <h2 class="title"><i class="fa fa-check check-icon"></i>Notes</h2>
+  </ion-footer-bar>
+  <ion-footer-bar class="bar footer-bar" align-title="center" ng-click="completedDoc('pod')" ng-style="{'background-color':docketDetailList.ColorCode}" ng-if="!itemSelected.ButtonName && button=='POD Details'">
+    <h2 class="title"><i class="fa fa-check check-icon"></i>{{button}}</h2>
+  </ion-footer-bar>
+  <ion-footer-bar class="bar footer-bar" align-title="center" ng-click="submitDel(docketDetailList)" ng-style="{'background-color':docketDetailList.ColorCode}" ng-if="!itemSelected.ButtonName && (button=='Manager POD'||button=='Survey'||button=='PPOD')">
+    <h2 class="title"><i class="fa fa-check check-icon"></i>{{button}}</h2>
+  </ion-footer-bar>
+</ion-view>

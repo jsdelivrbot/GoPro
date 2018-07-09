@@ -1,0 +1,32 @@
+﻿
+<ion-view view-title="Compose">
+    <ion-content>
+
+        <ion-list class="list">
+
+                 <form novalidate name="composeForm">
+                <div class="row">
+                    <div class="col-75 viewcontent">
+
+                        <textarea rows="20" id="sendmsg" ng-model="Text.sendmsg" name="composeText" required></textarea>
+                    </div>
+
+                    <div class="col-25 viewcontent">
+                        <!--<i class="icon ion-ios-telephone cal12"></i>-->
+                        <!--<i class="icon ion-android-send send12"></i>-->
+                        <div class="one1" ng-click="send(Text.sendmsg,composeForm)"> <i class="fa fa-paper-plane send12" aria-hidden="true"></i></div>
+                        <!--<div class="two2"><i class="fa fa-phone cal12" aria-hidden="true"></i></div>-->
+
+                    </div>                   
+
+                </div>
+                <div class="row">
+                    <div class="col viewcontent msg" ng-show="composeForm.composeText.$error.required && (composeForm.composeText.$dirty || hasError)">*Please enter a message</div>
+                </div>
+            </form>
+
+
+
+        </ion-list>
+    </ion-content>
+</ion-view>

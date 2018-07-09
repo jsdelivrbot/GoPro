@@ -1,0 +1,162 @@
+﻿.footer-icon {
+    background-image: url(../img/button-tick.png);
+    background-size: 20px;
+    background-repeat: no-repeat;
+    width: 30px;
+    height: 30px;
+}
+
+.head-right {
+    width: 110px;
+}
+
+.call-icon {
+    border: 1px solid #EF473A;
+    padding: 5px;
+    border-radius: 100%;
+    font-size: 16px;
+    color: #EF473A;
+}
+
+.docket-info {
+    width: 100%;
+    padding-left: 5px;
+    padding-right: 5px;
+}
+
+    .docket-info .col {
+        padding-left: 0px !important;
+        padding-right: 0px !important;
+    }
+
+    .docket-info h2, .docket-info p {
+        color: white;
+    }
+
+.footer-title {
+    position: absolute;
+    left: 50%;
+    margin-left: -15px;
+}
+
+.order {
+    font-size: 25px;
+}
+
+.order-col {
+    color: green;
+}
+
+.order-del {
+    color: #EF473A;
+}
+
+.subheader {
+    padding: 0;
+    height: auto;
+}
+
+.has-subclass {
+    top: 195px;
+    bottom: 44px;
+}
+
+.package-emptybadge {
+    border: none !important;
+    background: white !important;
+}
+
+    .package-emptybadge > p, .package-emptybadge > h2 {
+        color: white;
+    }
+
+.package-badge {
+    width: 80px;
+    height: 70px;
+    border: 1px solid #ccc;
+    position: absolute;
+    bottom: 40px;
+    border-radius: 4px;
+    background: #ccc;
+    text-align: center;
+}
+
+
+.notes-badge {
+    width: 73px;
+    height: 22px;
+    border: 1px solid #387ef5;
+    position: absolute;
+    bottom: 1px;
+    border-radius: 4px;
+    background: #f8f8f8;
+    text-align: center;
+}
+
+    .package-badge h2 {
+        margin-top: 10px;
+    }
+
+.item i {
+    color: #EF473A;
+}
+
+.package-badge i {
+    position: absolute;
+    /*left: -20px;*/
+    top: -30px;
+}
+
+.check-icon {
+    border: 2px solid white;
+    padding: 5px;
+    border-radius: 100%;
+    font-size: 16px;
+    color: white;
+    margin-right: 5px;
+}
+
+.footer-bar h2 {
+    color: white;
+}
+
+.deliverySelected {
+    width: 10px;
+    height: 10px;
+    border-radius: 100%;
+    background: #299ED4;
+    display: inline-block;
+}
+
+@media screen and (orientation:portrait) {
+
+    .bold {
+        font-weight: bold !important;
+    }
+}
+
+
+@media screen and (orientation:landscape ) {
+    .has-subclass {
+        top: 140px;
+    }
+
+    .small {
+        line-height: 70%;
+    }
+
+
+    .docket-info {
+        padding: 0px;
+    }
+
+    .nobold {
+        text-decoration: none;
+    }
+
+
+    /*.docket-info h2 {
+            display: none;
+        }*/
+}
+

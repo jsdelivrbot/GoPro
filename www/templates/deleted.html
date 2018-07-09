@@ -1,0 +1,30 @@
+﻿<ion-view view-title="Deleted">
+  <ion-content>
+      <!--<ion-refresher
+    pulling-text="Pull to refresh..."
+    on-refresh="InitInbox()">
+  </ion-refresher>-->
+    <ion-list class="list">
+    <a class="items b-align"  ng-repeat="msg in deletedData">    
+        <div class="row">        
+            <div class="col col-66 item-text-wrap">
+                <h5 style="color:royalblue">{{msg.FromUser}}</h5>
+                <p>{{msg.Subject}}</p>
+                <p>{{msg.MessageText}}</p>
+                
+            </div>  
+            
+            <div class="col col-34 " >
+               
+                <p class="font123">{{msg.CreatedDate.split("T")[0]}} {{msg.CreatedDate.split(".")[0].split("T")[1].slice(0,5)}}</p>
+                
+            </div>
+                                 
+        </div>
+                
+    </a>
+
+       
+</ion-list>
+  </ion-content>
+</ion-view>

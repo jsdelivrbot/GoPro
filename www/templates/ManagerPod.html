@@ -1,0 +1,67 @@
+﻿<ion-view view-title="Manager Pod">
+    <ion-content class='has-header padding'>
+        <form name="managerpodform" novalidate id="managerpodformSub" ng-submit="showdata(managerpodform,pod);">
+            <label class="item-input">
+                <span class="input-label pod-label"><b>CASH EXPECTED</b></span>
+                <input type="number" class="input-type" name="cashexpected" ng-model="pod.cashexpected" ng-pattern="/^[0-9]*$/" readonly>
+
+            </label>
+            <label class="item-input">
+                <span class="input-label pod-label"><b>CASH RECEIVED</b><span class="msg">*</span></span>
+                <input type="number" class="input-type" name="cashreceived" ng-model="pod.cashreceived" ng-pattern="/^[0-9]*$/" required>
+
+            </label>
+            <label class="item-input">
+                <span class="input-label pod-label"><b>POD NAME</b><span class="msg">*</span></span>
+                <input type="text" class="input-type" name="podname" ng-model="pod.podname" ng-pattern="/^[a-zA-Z ]*$/" required>
+
+            </label>
+            <label class="item-input">
+                <span class="input-label pod-label"><b>COMMENTS</b><span class="msg" ng-show="managerpodform.comments.$error.required">*</span></span>
+                <textarea ng-minlength="10" ng-maxlength="300" type="text" class="input-type" name="comments" ng-model="pod.comments" ng-required="pod.cashexpected!=pod.cashreceived"></textarea>
+
+            </label>
+
+            <br />
+            <div class="msg">
+                <p ng-show="managerpodform.cashreceived.$error.required && (managerpodform.cashreceived.$dirty ||errorinfo)">*Cash Received is required!</p>
+                <p ng-show="managerpodform.cashreceived.$error.pattern">*Inavlid Cash Received</p>
+                <p ng-show="managerpodform.cashexpected.$error.required && (managerpodform.cashexpected.$dirty ||errorinfo)">*Cash Expected is required!</p>
+                <p ng-show="managerpodform.cashexpected.$error.pattern">*Inavlid Cash Expected</p>
+                <p ng-show="managerpodform.podname.$error.required &&(managerpodform.podname.$dirty ||errorinfo)">*Pod Name is required!</p>
+                <p ng-show="managerpodform.podname.$error.pattern">*Invalid Pod Name</p>
+                <p ng-show="managerpodform.comments.$error.required &&(managerpodform.comments.$dirty ||errorinfo)">*Cash discrepancy – comment required!</p>
+                <p ng-show="managerpodform.comments.$error.maxlength || managerpodform.comments.$error.minlength">*Comments must be minimum 10 characters and maximum 300 characters</p>
+                <p ng-show="cashErr">{{cashRecErr}}</p>
+                <p ng-show="imgError">*Sign is required</p>
+            </div>
+            <div id="canvasParent">
+                <!--<canvas id='signatureCanvas' width='320' height='320'></canvas>-->
+                <button class="button button-clear ion-backspace clear-icon" ng-click="clearSign()"></button>
+
+                <signature-pad accept="$parent.accept" clear="$parent.clear" dataurl="basedata" clear="clear" height="150" width="320" style="margin:auto"></signature-pad>
+
+            </div>
+
+            <!-- <ion-pane>-->
+            <!--<div style="text-align:center;">
+                <canvas id='signatureCanvas' name="signature" width='325' height='200' style='border: 1px solid #ccc;' required></canvas><br >
+                <span ng-show="imgError">sign is required</span>
+            </div>-->
+            <!--</ion-pane>-->
+
+        </form>
+        <!--<div class="bar bar-footer bar-calm">
+        <h2 class="title" ng-click="showdata(managerpodform,pod);">COMPLETED</h2>
+        </div>-->
+    </ion-content>
+    <ion-footer-bar style="background-color:#05ADEA;" class="action-footer">
+        <button type="submit" class="bar bar-footer bar-calm" form="managerpodformSub">
+            <div class="ion-checkmark-circled footer-text">COMPLETE</div>
+        </button>
+    </ion-footer-bar>
+    <!--<ion-footer-bar class="bar-assertive center-block"  ng-style="{'background-color':docketDetailList.ColorCode}" >
+        <i class="icon icon-button-tick menu-icon"></i>
+        <h2 class="title" style="text-decoration:none;"><a href="#" ng-click="showdata(pod);" style="text-decoration:none;">COMPLETE</a></h2>
+    </ion-footer-bar>-->
+</ion-view>

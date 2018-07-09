@@ -1,0 +1,190 @@
+<ion-side-menus enable-menu-with-back-views="false">
+
+    <ion-side-menu-content>
+        <ion-nav-bar class="bar-stable">
+            <ion-nav-back-button>
+            </ion-nav-back-button>
+            
+                <ion-nav-buttons side="right">
+                    <button class="button fa fa-ellipsis-v" ng-click="openPopover($event)"></button>
+                </ion-nav-buttons>
+
+            <ion-nav-buttons side="left">
+                <button class="button button-icon button-clear ion-navicon" menu-toggle="left"></button>
+                <ion-checkbox ng-model="app.isChecked" class="selectall-Checkbox" ng-click="selectALL()" ng-if="showSelect"></ion-checkbox>
+                <b class="all-icon" ng-if="!app.isChecked&&showSelect">ALL</b>
+                <i class="icon ion-arrow-right-c selectAll-send" ng-if="app.isChecked&&showSelect" ng-click="sendSelectAll();"></i>
+            </ion-nav-buttons>
+
+        </ion-nav-bar>
+        <ion-nav-view name="menuContent"></ion-nav-view>
+    </ion-side-menu-content>
+
+    <ion-side-menu side="left">
+        <div class="list profile-detail">
+            <a class="item item-avatar">
+                <img src="img/avatar.png">
+                <h2>{{logindetail.DriverName}}</h2>
+                <p>{{logindetail.DriverID}}</p>
+            </a>
+        </div>
+        <ion-content class="list-content">
+            <ion-list>
+                <ion-item menu-close ui-sref="app.docketlist">
+                    <a class="item item-icon-left item-menu-icon">
+                        <i class="icon icon-dockets menu-icon"></i>
+                        Dockets
+                    </a>
+                </ion-item>
+                <ion-item menu-close ui-sref="app.complete">
+                    <a class="item item-icon-left item-menu-icon">
+                        <i class="icon icon-completed menu-icon"></i>
+                        Completed
+                    </a>
+                </ion-item>
+                <ion-item menu-close ui-sref="app.message">
+                    <a class="item item-icon-left item-menu-icon">
+                        <i class="icon icon-messages menu-icon"><span class="msgstyle">{{msgcount}}</span></i>
+                        Messages
+                    </a>
+                </ion-item>
+                <!--<ion-item menu-close ui-sref="app.browse">
+                    <a class="item item-icon-left item-menu-icon">
+                        <i class="icon icon-messages menu-icon"></i>
+                        Messages
+                    </a>
+
+
+                </ion-item>-->
+                <!--<ion-item menu-close ui-sref="app.compose">
+                    <a class="item item-icon-left item-menu-icon">
+                        <i class="icon icon-messages menu-icon"></i>
+                        Compose
+                    </a>
+
+
+                </ion-item>
+                <ion-item menu-close ui-sref="app.inbox">
+                    <a class="item item-icon-left item-menu-icon">
+                        <i class="icon icon-messages menu-icon"></i>
+                        Inbox
+                    </a>
+
+
+                </ion-item>
+
+
+                <ion-item menu-close ui-sref="app.sent">
+
+                    <a class="item item-icon-left item-menu-icon">
+                        <i class="icon icon-messages menu-icon"></i>
+                        Sent
+                    </a>
+
+
+                </ion-item>-->
+                <!-- <ion-item menu-close ui-sref="app.deleted">
+
+                    <a class="item item-icon-left item-menu-icon">
+                        <i class="icon icon-messages menu-icon"></i>
+                        Deleted
+                    </a>
+
+
+                </ion-item>-->
+                <ion-item ng-repeat="task in tasks">
+                    {{task.title}}
+                </ion-item>
+                <!--<ion-item menu-close>
+                    <a class="item item-icon-left item-menu-icon" href="#/app/DriverPod">
+                        <i class="icon icon-driverPod menu-icon"></i>
+                        DriverPod
+                    </a>
+                </ion-item>-->
+                <!--<ion-item menu-close>
+                    <a class="item item-icon-left item-menu-icon" href="#/app/pod">
+                        POD
+                    </a>
+                </ion-item>
+                <ion-item menu-close>
+                    <a class="item item-icon-left item-menu-icon" href="#/app/ManagerPod">
+                        MANAGER POD
+                    </a>
+                </ion-item>
+                <ion-item menu-close>
+                    <a class="item item-icon-left item-menu-icon" href="#/app/survey">
+                        SURVEY
+                    </a>
+                </ion-item>-->
+                <!-- <ion-item menu-close >
+                     <a class="item item-icon-left item-menu-icon" href="#/app/surveyraj" >
+                         <i class="icon icon-dockets menu-icon"></i>
+                         SURVEYraj
+                     </a>
+                 </ion-item>-->
+
+                <ion-item menu-close ng-click="logout()">
+                    <a class="item item-icon-left item-menu-icon">
+
+                        <i class="icon icon-logout menu-icon"></i>
+                        Logout
+                    </a>
+                </ion-item>
+            </ion-list>
+        </ion-content>
+    </ion-side-menu>
+</ion-side-menus>
+<script id="templates/modal.html" type="text/ng-template">
+    <ion-modal-view>
+        <ion-header-bar class="bar bar-header bar-stable">
+            <h1 class="title">Call Controller</h1>
+            <button class="button button-clear button-primary" ng-click="modal.hide()">Cancel</button>
+        </ion-header-bar>
+        <ion-content class="">
+            <ion-list class="list" ng-repeat="contactlist in ContactDetails">
+                <a class="item a-align" href="tel:{{contactlist.MobileNumber}}"><span class="padding-left">{{contactlist.FirstName}} {{contactlist.LastName}}</span></a>
+                <!-- <a class="item a-align"  href="tel:9003034924"><span class="padding-left">9003034924</span></a> -->
+            </ion-list>
+        </ion-content>
+    </ion-modal-view>
+</script>
+
+
+<script id="my-popover.html" type="text/ng-template">
+    <ion-popover-view class="border">
+
+        <ion-list>
+            <ion-item ng-click="takeBreak()" class="imgpad">
+                <a class="item item-icon-left item-menu-icon ">
+                    <i class="icon menu-icon custom-icons iconstyle" ng-class="{'ion-close-circled':break,'ion-checkmark-circled':!break}"></i>
+                    Break
+                </a>
+            </ion-item>
+        </ion-list>
+        <ion-list>
+            <ion-item ng-click="callController()" class="imgpad">
+                <a class="item item-icon-left item-menu-icon ">
+                    <i class="icon menu-icon custom-icons ion-ios-telephone iconstyle" style="color: #157aa8!important"></i>
+                    Call Controller
+                </a>
+            </ion-item>
+        </ion-list>
+
+        <!-- <ion-list>
+            <ion-item ng-click="callControllerCust()" class="imgpad">
+                <a class="item item-icon-left item-menu-icon ">
+                    <i class="icon menu-icon custom-icons ion-ios-telephone iconstyle" style="color: #157aa8!important"></i>
+                    Call Customer
+                </a>
+            </ion-item>
+        </ion-list> -->
+        <ion-list>
+            <ion-item ng-click="redirect()" class="imgpad">
+                <a class="item item-icon-left item-menu-icon ">
+                    <i class="icon menu-icon ion-email custom-icons iconstyle" style="color: #157aa8!important"></i>
+                    Message
+                </a>
+            </ion-item>
+        </ion-list>
+    </ion-popover-view>
+</script>
